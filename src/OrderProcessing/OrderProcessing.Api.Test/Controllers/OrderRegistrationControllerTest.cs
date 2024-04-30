@@ -1,10 +1,12 @@
 ﻿using System.Net;
+using System.Net.Http.Json;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using OrderProcessing.Api.Data;
+using OrderProcessing.Api.Models;
 using Xunit;
 
 namespace OrderProcessing.Api.Test.Controllers
@@ -35,9 +37,11 @@ namespace OrderProcessing.Api.Test.Controllers
             var requestUrl = GetOrderEndpointUrl();
 
             var response = await httpClient.PostAsync(requestUrl, null);
-            var som = response.Content;
-            var e = await som.ReadAsStringAsync();
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var result = await response.Content.ReadFromJsonAsync<Receipt>();
+
+            result.Should().NotBeNull();
+            result?.Orders.Should().NotBeEmpty();
+            result?.ProcessedDateTime.Should().BeAfter(result.Orders.First().CreatedDate);
         }
 
         private static string GetOrderEndpointUrl()
