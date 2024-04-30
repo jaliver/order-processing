@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using OrderProcessing.Api.Data;
+using OrderProcessing.Api.Generators;
+using OrderProcessing.Api.Repositories;
+using OrderProcessing.Api.Services;
 using OrderProcessing.Api.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,9 @@ var configuration = CreateConfiguration();
 
 builder.Services.AddSingleton(configuration);
 builder.Services.AddSingleton<ISettings, Settings>();
+builder.Services.AddScoped<IOrderGenerator, OrderGenerator>();
+builder.Services.AddScoped<IOrderProcessingService, OrderProcessingService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddDbContext<OrderDbContext>(options =>
     options.UseSqlite(CreateConfiguration().GetConnectionString("DefaultConnection")));

@@ -17,7 +17,7 @@ namespace OrderProcessing.Api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("OrderProcessing.Api.Models.Order", b =>
+            modelBuilder.Entity("OrderProcessing.Api.Models.Orders", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace OrderProcessing.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 #pragma warning restore 612, 618
         }

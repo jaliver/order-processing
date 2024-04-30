@@ -2,7 +2,7 @@
 {
     public class Receipt
     {
-        public Order? Order { get; set; }
+        public IReadOnlyCollection<Order> Orders { get; set; } = new List<Order>();
         public DateTime ProcessedDateTime { get; set; }
     }
 }

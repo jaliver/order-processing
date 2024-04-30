@@ -1,20 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using OrderProcessing.Api.Generators;
 using OrderProcessing.Api.Models;
+using OrderProcessing.Api.Services;
 
 namespace OrderProcessing.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class OrderRegistrationController : ControllerBase
     {
-        public OrderRegistrationController()
+        private readonly IOrderGenerator _orderGenerator;
+        private readonly IOrderProcessingService _orderProcessingService;
+
+        public OrderRegistrationController(IOrderGenerator orderGenerator, IOrderProcessingService orderProcessingService)
         {
+            ArgumentNullException.ThrowIfNull(orderGenerator, nameof(orderGenerator));
+            ArgumentNullException.ThrowIfNull(orderProcessingService, nameof(orderProcessingService));
+
+            _orderGenerator = orderGenerator;
+            _orderProcessingService = orderProcessingService;
         }
 
         [HttpPost("orders")]
-        public Receipt CreateOrders()
+        public async Task<Receipt> CreateOrders()
         {
-            throw new NotImplementedException();
+            var orders = _orderGenerator.GenerateConfiguredNumberOfOrders();
+
+            return await _orderProcessingService.ProcessOrders(orders);
         }
     }
 }

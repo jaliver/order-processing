@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Api", "OrderProcessing.Api\OrderProcessing.Api.csproj", "{1CF1E7B7-C71E-40CC-BE25-2DA18C356DE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Api.Test", "OrderProcessing.Api.Test\OrderProcessing.Api.Test.csproj", "{8EF8B5AB-57D3-4009-99BD-4EF2C87D51A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1CF1E7B7-C71E-40CC-BE25-2DA18C356DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CF1E7B7-C71E-40CC-BE25-2DA18C356DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CF1E7B7-C71E-40CC-BE25-2DA18C356DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EF8B5AB-57D3-4009-99BD-4EF2C87D51A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF8B5AB-57D3-4009-99BD-4EF2C87D51A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF8B5AB-57D3-4009-99BD-4EF2C87D51A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF8B5AB-57D3-4009-99BD-4EF2C87D51A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
